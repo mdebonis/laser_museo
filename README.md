@@ -11,7 +11,7 @@ servomotore, quindi il laser può muoversi lungo un solo asse, inoltre il circui
 il codice nella memoria dell'ESP-32. Da implementare la gestione di due servomotori
 e la creazione di una fonte di alimentazione fissa per il completamento del progetto.
 
-## Immagini e schema
+# Immagini e schema
 
 ![schema](https://github.com/tonygiuliani/laser_museo/blob/main/images/schema.jpeg)
 
@@ -32,7 +32,7 @@ preme il pulsante l'ESP-32 si riavvia e ritorna in modalità server web.
 # Come installare
 
 L'installazione del progetto richiede la realizzazione del circuito secondo lo
-[schema](##Immagini e schema) descritto e l'installazione dell'ambiente di sviluppo
+[schema](#Immagini e schema) descritto e l'installazione dell'ambiente di sviluppo
 con le annesse librerie, come descritto nella [documentazione](#Documentazione).
 
 # Documentazione
