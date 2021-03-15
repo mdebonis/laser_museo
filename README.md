@@ -11,10 +11,6 @@ e la creazione di una fonte di alimentazione fissa per il completamento del prog
 > Realizzazione di una teca multimediale (movimento di un laser, riproduzione audio) con il
 microcontrollore ESP-32, in linguaggio C++.
 
-## Immagini e schema
-
-![schema](https://github.com/tonygiuliani/laser_museo/blob/main/images/schema.jpeg)
-
 # Indice
 
 - [Come iniziare](#come-iniziare)
@@ -22,7 +18,11 @@ microcontrollore ESP-32, in linguaggio C++.
 - [Manutenzione](#manutenzione)
 - [Licenza](#licenza)
 
-# Come iniziare
+## Immagini e schema
+
+![schema](https://github.com/tonygiuliani/laser_museo/blob/main/images/schema.jpeg)
+
+# Come utilizzare
 
 Una volta avviato l'ESP-32, esso è in **modalità server web**, quindi è possibile trovare
 la pagina web inserendo nel browser l'indirizzo **192.168.4.1**, dopo essersi collegati
@@ -36,36 +36,20 @@ Quando si preme il pulsante, l'ESP-32 inizia la **riproduzione del file audio** 
 **modalità esposizione**. Una volta terminata la riproduzione del file audio, se si
 preme il pulsante l'ESP-32 si riavvia e ritorna in modalità server web.
 
-## Dipendenze
 ## Come installare
 
-```js
-console.log("Questo è un esempio di blocco di codice")
-```
+L'installazione del progetto richiede la realizzazione del circuito secondo lo
+[schema](#Immagini e schema) descritto e l'installazione dell'ambiente di sviluppo
+con le annesse librerie, come descritto nella [documentazione](#Documentazione).
 
 ## Documentazione
+
+
+
 ### Link a documentazione esterna
 
-# Come contribuire
 
-## Installare le dipendenze di sviluppo
-
-## Struttura del progetto
-
-## Community
-
-### Code of conduct
-
-### Responsible Disclosure
-
-### Segnalazione bug e richieste di aiuto
-
-# Manutenzione
-
-# Licenza
 
 ## Licenza generale
 
 ## Autori e Copyright
-
-## Licenze software dei componenti di terze parti
