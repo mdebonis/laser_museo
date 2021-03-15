@@ -32,8 +32,8 @@ preme il pulsante l'ESP-32 si riavvia e ritorna in modalità server web.
 # Come installare
 
 L'installazione del progetto richiede la realizzazione del circuito secondo lo
-[schema](##Immagini e schema) descritto e l'installazione dell'ambiente di sviluppo
-con le annesse librerie, come descritto nella [documentazione](#Documentazione).
+[schema](## Immagini e schema) descritto e l'installazione dell'ambiente di sviluppo
+con le annesse librerie, come descritto nella [documentazione](# Documentazione).
 
 # Documentazione
 
