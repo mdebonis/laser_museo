@@ -11,7 +11,7 @@ microcontrollore ESP-32, in linguaggio C++
 
 ## Immagini e schema
 
-![Recordit GIF](http://g.recordit.co/iLN6A0vSD8.gif)
+![schema](https://github.com/tonygiuliani/laser_museo/blob/main/images/schema.jpeg)
 
 # Indice
 
