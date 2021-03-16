@@ -37,6 +37,31 @@ con le annesse librerie, come descritto nella [documentazione](#Documentazione).
 
 # Documentazione
 
+## Ambiente di sviluppo
+
+### Arduino IDE
+
+L'ambiente di sviloppo utilizzato è **Arduino IDE** che, se configurato correttamente,
+permette di scrivere codice, caricarlo e installare librerie per il microcontrollore ESP-32.
+
+[Link al tutorial per la configurazione completa dell' Arduino IDE](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)
+
+### Librerie
+
+```C++
+#include <Servo.h>                //https://github.com/jkb-git/ESP32Servo
+#include "Arduino.h"
+#include "Audio.h"                //https://github.com/schreibfaul1/ESP32-audioI2S            
+#include "SPI.h"                    
+#include "SD.h"
+#include "FS.h"
+#include <WiFi.h>
+#include <AsyncTCP.h>             //https://github.com/me-no-dev/AsyncTCP
+#include <ESPAsyncWebServer.h>    //https://github.com/me-no-dev/ESPAsyncWebServer
+#include <WiFiAP.h>
+#include <HTTPClient.h>
+```
+
 ## Descrizione componenti
 
 ### ESP-32
@@ -64,19 +89,14 @@ Dispositivo che include un convertitore digitale-analogico audio e circuiti di s
 
 Il micro-SD-reader permette di leggere la scheda SD con gli audio utilizzati per il progetto. I moduli della scheda SD sono collegati tramite SPI al microcontroller ESP32. La comunicazione SPI garantisce che i dati siano trasferiti il più velocemente possibile. Il microcontroller ESP32 e il modulo scheda SD hanno la stessa tensione operativa di 3,3V. Se si alimenta la scheda ESP32 tramite Micro-USB, è anche possibile utilizzare il pin v5 che fornisce un alimentatore di 5V per la scheda SD. Il regolatore di tensione interno e lo shifter a livello logico riducono la tensione di alimentazione fino a 3,3V e traducono anche la comunicazione SPI al livello di tensione desiderato.
 
-### Condensatore elettrolitico (47mf) 
+### Condensatore elettrolitico (47mf)
 
-Utilizzato nel progetto per abilitare permanentemente la modalità flash/upload sull’esp-32. 
-Ha un perno positivo (l'anodo) ed un perno negativo chiamato catodo. Quando la tensione è applicata ad un condensatore elettrolitico, l'anodo deve essere ad una tensione superiore al catodo. Il catodo di un condensatore elettrolitico viene generalmente identificato con marchiato un '-' , e una striscia colorata sul case. La gamba dell'anodo potrebbe anche essere leggermente più lunga. Quando la corrente fluisce in un condensatore, le cariche sono "bloccate" sulle piastre perché non possono andare oltre il dielettrico isolante. Gli elettroni (particelle con carica negativa) vengono risucchiati in una delle piastre, diventando così di carica negativa. La grande massa di cariche negative su una piastra spinge via le altre cariche sull'altra piastra, rendendola carica positivamente. Le cariche positive e negative su ciascuno di queste piastre si attraggono, perché è quello che fanno cariche le opposte. Ma, con il dielettrico tra di loro, per quanto vogliono unirsi, le cariche saranno sempre bloccate sulla piastra (fino a quando non avranno un altro posto dove andare). Le cariche stazionarie su queste piastre creano un campo elettrico, che influenzano energia potenziale elettrica e tensione . Quando un gruppo di cariche si trovano su un condensatore di questo tipo, il condensatore può immagazzinare energia elettrica, come una batteria può immagazzinare energia chimica.
+Utilizzato nel progetto per abilitare permanentemente la modalità flash/upload sull’esp-32.
+Ha un perno positivo (l'anodo) ed un perno negativo chiamato catodo. Quando la tensione è applicata ad un condensatore elettrolitico, l'anodo deve essere ad una tensione superiore al catodo. Il catodo di un condensatore elettrolitico viene generalmente identificato con marchiato un '-' , e una striscia colorata sul case. La gamba dell'anodo potrebbe anche essere leggermente più lunga. Quando la corrente fluisce in un condensatore, le cariche sono "bloccate" sulle piastre perché non possono andare oltre il dielettrico isolante. Gli elettroni (particelle con carica negativa) vengono risucchiati in una delle piastre, diventando così di carica negativa. La grande massa di cariche negative su una piastra spinge via le altre cariche sull'altra piastra, rendendola carica positivamente. Le cariche positive e negative su ciascuno di queste piastre si attraggono, perché è quello che fanno cariche le opposte. Ma, con il dielettrico tra di loro, per quanto vogliono unirsi, le cariche saranno sempre bloccate sulla piastra (fino a quando non avranno un altro posto dove andare). Le cariche stazionarie su queste piastre creano un campo elettrico, che influenzano energia potenziale elettrica e tensione. Quando un gruppo di cariche si trovano su un condensatore di questo tipo, il condensatore può immagazzinare energia elettrica, come una batteria può immagazzinare energia chimica.
 
 ### Resistenza (10kΩ)
 
 ### Pulsante
-
-
-
-## Link a documentazione esterna
-
 
 
 # Licenza generale
