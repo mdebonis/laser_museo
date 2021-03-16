@@ -49,7 +49,7 @@ permette di scrivere codice, caricarlo e installare librerie per il microcontrol
 ### Librerie
 
 ```C++
-#include <Servo.h>                [Link alla libreria]https://github.com/jkb-git/ESP32Servo
+#include <Servo.h>                //https://github.com/jkb-git/ESP32Servo
 #include "Arduino.h"
 #include "Audio.h"                //https://github.com/schreibfaul1/ESP32-audioI2S            
 #include "SPI.h"                    
@@ -61,6 +61,18 @@ permette di scrivere codice, caricarlo e installare librerie per il microcontrol
 #include <WiFiAP.h>
 #include <HTTPClient.h>
 ```
+
+> POTREBBE ESSERE NECESSARIO RIMUOVERE ALCUNE LIBRERIE STANDARD DI ARDUINO CHE HANNO LO STESSO NOME DELLE NUOVE LIBRERIE DA IMPORTARE.
+LA PRESENZA DI PIU LIBRERIE CON LO STESSO NOME POTREBBE CAUSARE PROBLEMI.
+
+Link per l'installazione delle librerie:
+- [<Servo.h>](https://github.com/jkb-git/ESP32Servo)
+- ["Audio.h"](https://github.com/schreibfaul1/ESP32-audioI2S)
+- [<AsyncTCP.h>](https://github.com/me-no-dev/AsyncTCP)
+- [<ESPAsyncWebServer.h>](https://github.com/me-no-dev/ESPAsyncWebServer)
+
+> Le librerie per le quali non è presente il link sono già preinstallate nell'Arduino IDE,
+tuttavia potrebbero non funzionare per ESP-32: in caso di errori, è necessario cercarle sul web per installarle.
 
 ## Descrizione componenti
 
