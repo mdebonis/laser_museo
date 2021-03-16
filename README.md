@@ -1,6 +1,7 @@
 # TECA MULTIMEDIALE
 
-> Realizzazione di una teca multimediale (movimento di un laser, riproduzione audio) con il
+> Realizzazione di una teca multimediale (movimento di un laser che punta a degli oggetti da descrivere e riproduzione audio
+contenente la descrizione dell'oggetto puntato dal laser), con il
 microcontrollore ESP-32, in linguaggio C++.
 
 # FUNZIONANTE / DA COMPLETARE
