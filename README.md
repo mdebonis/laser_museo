@@ -14,7 +14,7 @@ e la creazione di una fonte di alimentazione fissa per il completamento del prog
 
 # Schema
 
-![schema](https://github.com/tonygiuliani/laser_museo/blob/main/images/schema.jpeg)
+![schema](https://github.com/mdebonis/laser_museo/blob/main/images/schema.jpeg)
 
 # Come utilizzare
 
@@ -44,7 +44,7 @@ Il codice caricato nell'ESP-32 è scritto in C++ ed è composto da due task prin
 che vengono eseguiti contemporaneamente (Task riproduzione audio, Task movimento servomotore),
 oltre alla sezione di setup del web server e delle varie interfacce e pin.
 
-Per una descrizione dettagliata del codice, [si rimanda al codice stesso commentato.](https://github.com/tonygiuliani/laser_museo/blob/main/teca_multimediale_v8.ino)
+Per una descrizione dettagliata del codice, [si rimanda al codice stesso commentato.](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8.ino)
 
 ## Ambiente di sviluppo
 
