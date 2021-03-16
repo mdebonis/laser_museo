@@ -37,6 +37,42 @@ con le annesse librerie, come descritto nella [documentazione](#Documentazione).
 
 # Documentazione
 
+## Descrizione componenti
+
+### ESP-32
+
+ESP32 è una serie di microcontrollore system-on-a-chip a basso costo e a basso consumo. Ha un wi-fi integrato e radio Bluetooth dual-mode. Ha molte delle capacità dell'Arduino e può essere programmato con il software Arduino IDE.
+la ESP32 possiede un chip Tensilica Xtensa dual-core LX6, basato su architettura a 32BIT, in grado di raggiungere i 240MHz e con ben 4MB di memoria flash, associati a 512KB di RAM. Possiamo adoperare ben 36 PIN GPIO tutti PWM, lavorando con una tensione a 3,3V, senza però dimenticare che possiamo alimentare questa scheda anche con i 5V dal connettore Micro-USB o da pin VIN.
+
+### Servomotore MG996R
+
+Il Servomotore MG996R Digital è dotato di ingranaggi in metallo che permettono di raggiungere una coppia di 9,4 kg con una alimentazione a 4,8Vcc e di 11 Kg con una alimentazione a 6Vcc.
+L'unità è fornita completa di un cavo di connessione da 30 cm terminato con un connettore femmina a 3 poli. È collegato all’esp-32 tramite un semplice pin digitale.
+Il Servomotore MG996R può ruotare di circa 180° ed è fornito con una ampia gamma di accessori, tra i quali i supporti utilizzati nel progetto per far muovere il laser e per permettere di collegare insieme due servomotori.
+
+### Diodo laser
+
+Il componente principale è rappresentato da un diodo laser che emette un fascio laser di colore rosso a bassa potenza.
+I suo assorbimento è di soli 30 mA, per cui in linea con la massima la corrente nominale che un pin digitale di Arduino può fornire pari a 40 mA.
+Come il servomotore, il laser è collegato ad un pin digitale dell’esp-32.
+
+### D/A audio converter PCM1502A
+
+Dispositivo che include un convertitore digitale-analogico audio e circuiti di supporto aggiuntivi, grazie all’architettura d’ultima generazione si riescono ad ottenere eccellenti prestazione dinamiche. Supporta carichi fino a 1kΩ per pin e il PLL integrato ci permette di connetterlo tramite bus I2S all’ESP32.
+
+### Micro-SD-card reader
+
+Il micro-SD-reader permette di leggere la scheda SD con gli audio utilizzati per il progetto. I moduli della scheda SD sono collegati tramite SPI al microcontroller ESP32. La comunicazione SPI garantisce che i dati siano trasferiti il più velocemente possibile. Il microcontroller ESP32 e il modulo scheda SD hanno la stessa tensione operativa di 3,3V. Se si alimenta la scheda ESP32 tramite Micro-USB, è anche possibile utilizzare il pin v5 che fornisce un alimentatore di 5V per la scheda SD. Il regolatore di tensione interno e lo shifter a livello logico riducono la tensione di alimentazione fino a 3,3V e traducono anche la comunicazione SPI al livello di tensione desiderato.
+
+### Condensatore elettrolitico (47mf) 
+
+Utilizzato nel progetto per abilitare permanentemente la modalità flash/upload sull’esp-32. 
+Ha un perno positivo (l'anodo) ed un perno negativo chiamato catodo. Quando la tensione è applicata ad un condensatore elettrolitico, l'anodo deve essere ad una tensione superiore al catodo. Il catodo di un condensatore elettrolitico viene generalmente identificato con marchiato un '-' , e una striscia colorata sul case. La gamba dell'anodo potrebbe anche essere leggermente più lunga. Quando la corrente fluisce in un condensatore, le cariche sono "bloccate" sulle piastre perché non possono andare oltre il dielettrico isolante. Gli elettroni (particelle con carica negativa) vengono risucchiati in una delle piastre, diventando così di carica negativa. La grande massa di cariche negative su una piastra spinge via le altre cariche sull'altra piastra, rendendola carica positivamente. Le cariche positive e negative su ciascuno di queste piastre si attraggono, perché è quello che fanno cariche le opposte. Ma, con il dielettrico tra di loro, per quanto vogliono unirsi, le cariche saranno sempre bloccate sulla piastra (fino a quando non avranno un altro posto dove andare). Le cariche stazionarie su queste piastre creano un campo elettrico, che influenzano energia potenziale elettrica e tensione . Quando un gruppo di cariche si trovano su un condensatore di questo tipo, il condensatore può immagazzinare energia elettrica, come una batteria può immagazzinare energia chimica.
+
+### Resistenza (10kΩ)
+
+### Pulsante
+
 
 
 ## Link a documentazione esterna
