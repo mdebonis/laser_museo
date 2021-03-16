@@ -37,6 +37,14 @@ con le annesse librerie, come descritto nella [documentazione](#Documentazione).
 
 # Documentazione
 
+## Codice
+
+Il codice caricato nell'ESP-32 è scritto in C++ ed è composto da due task principali
+che vengono eseguiti contemporaneamente (Task riproduzione audio, Task movimento servomotore),
+oltre alla sezione di setup del web server e delle varie interfacce e pin.
+
+Per una descrizione dettagliata del codice, [si rimanda al codice stesso commentato.](https://github.com/tonygiuliani/laser_museo/blob/main/teca_multimediale_v8.ino)
+
 ## Ambiente di sviluppo
 
 ### Arduino IDE
@@ -63,7 +71,7 @@ permette di scrivere codice, caricarlo e installare librerie per il microcontrol
 ```
 
 > POTREBBE ESSERE NECESSARIO RIMUOVERE ALCUNE LIBRERIE STANDARD DI ARDUINO CHE HANNO LO STESSO NOME DELLE NUOVE LIBRERIE DA IMPORTARE.
-LA PRESENZA DI PIU LIBRERIE CON LO STESSO NOME POTREBBE CAUSARE PROBLEMI.
+LA PRESENZA DI PIU' LIBRERIE CON LO STESSO NOME POTREBBE CAUSARE PROBLEMI.
 
 Link per l'installazione delle librerie:
 - [<Servo.h>](https://github.com/jkb-git/ESP32Servo)
@@ -74,7 +82,7 @@ Link per l'installazione delle librerie:
 > Le librerie per le quali non è presente il link sono già preinstallate nell'Arduino IDE,
 tuttavia potrebbero non funzionare per ESP-32: in caso di errori, è necessario cercarle sul web per installarle.
 
-## Descrizione componenti
+## Componenti
 
 ### ESP-32
 
@@ -109,8 +117,3 @@ Ha un perno positivo (l'anodo) ed un perno negativo chiamato catodo. Quando la t
 ### Resistenza (10kΩ)
 
 ### Pulsante
-
-
-# Licenza generale
-
-## Autori e Copyright
