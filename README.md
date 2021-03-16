@@ -49,7 +49,7 @@ permette di scrivere codice, caricarlo e installare librerie per il microcontrol
 ### Librerie
 
 ```C++
-#include <Servo.h>                //https://github.com/jkb-git/ESP32Servo
+#include <Servo.h>                [Link alla libreria]https://github.com/jkb-git/ESP32Servo
 #include "Arduino.h"
 #include "Audio.h"                //https://github.com/schreibfaul1/ESP32-audioI2S            
 #include "SPI.h"                    
