@@ -12,7 +12,7 @@ servomotore, quindi il laser può muoversi lungo un solo asse, inoltre il circui
 il codice nella memoria dell'ESP-32. Da implementare la gestione di due servomotori
 e la creazione di una fonte di alimentazione fissa per il completamento del progetto.
 
-Il codice ([teca_multimediale_v9.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v9.ino)) permette la gestione di due servomotori e quindi il movimento del laser in due dimensioni. **Non è ancora stato testato, quindi potrebbe non funzionare**. **Lo [schema](#Schema) sottostante funziona solamente con il codice [teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8.ino)**
+La versione successiva del codice ([teca_multimediale_v9.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v9.ino)) permette la gestione di due servomotori e quindi il movimento del laser in due dimensioni. **Non è ancora stato testato, quindi potrebbe non funzionare**. **Lo [schema](#Schema) sottostante funziona solamente con il codice [teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8.ino)**
 
 # Schema
 
