@@ -6,11 +6,13 @@ microcontrollore ESP-32, in linguaggio C++.
 
 # FUNZIONANTE / DA COMPLETARE
 
-Il codice e il circuito sono sono funzionanti e permettono il movimento di un solo
+Il codice ([teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8.ino)) e il circuito sono sono funzionanti e permettono il movimento di un solo
 servomotore, quindi il laser può muoversi lungo un solo asse, inoltre il circuito
 è interamente alimentato dal cavo USB utilizzato in fase di realizzazione per caricare
 il codice nella memoria dell'ESP-32. Da implementare la gestione di due servomotori
 e la creazione di una fonte di alimentazione fissa per il completamento del progetto.
+
+Il codice ([teca_multimediale_v9.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v9.ino)) permette la gestione di due servomotori e quindi il movimento del laser in due dimensioni. **Non è ancora stato testato, quindi potrebbe non funzionare**. **Lo [schema](#Schema) sottostante funziona solamente con il codice [teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8.ino)**
 
 # Schema
 
@@ -50,7 +52,7 @@ Per una descrizione dettagliata del codice, [si rimanda al codice stesso comment
 
 ### Arduino IDE
 
-L'ambiente di sviloppo utilizzato è **Arduino IDE** che, se configurato correttamente,
+L'ambiente di sviluppo utilizzato è **Arduino IDE** che, se configurato correttamente,
 permette di scrivere codice, caricarlo e installare librerie per il microcontrollore ESP-32.
 
 [Link al tutorial per la configurazione completa dell' Arduino IDE](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)
