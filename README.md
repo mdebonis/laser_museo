@@ -6,13 +6,13 @@ microcontrollore ESP-32, in linguaggio C++.
 
 # FUNZIONANTE / DA COMPLETARE
 
-Il codice ([teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8.ino)) e il circuito sono sono funzionanti e permettono il movimento di un solo
+Il codice ([teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8/teca_multimediale_v8.ino)) e il circuito sono sono funzionanti e permettono il movimento di un solo
 servomotore, quindi il laser può muoversi lungo un solo asse, inoltre il circuito
 è interamente alimentato dal cavo USB utilizzato in fase di realizzazione per caricare
 il codice nella memoria dell'ESP-32. Da implementare la gestione di due servomotori
 e la creazione di una fonte di alimentazione fissa per il completamento del progetto.
 
-La versione successiva del codice ([teca_multimediale_v9.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v9.ino)) permette la gestione di due servomotori e quindi il movimento del laser in due dimensioni. **Non è ancora stato testato, quindi potrebbe non funzionare**. **Lo [schema](#Schema) sottostante funziona solamente con il codice [teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8.ino)**
+La versione successiva del codice ([teca_multimediale_v9.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v9/teca_multimediale_v9.ino)) permette la gestione di due servomotori e quindi il movimento del laser in due dimensioni. **Non è ancora stato testato, quindi potrebbe non funzionare**. **Lo [schema](#Schema) sottostante funziona solamente con il codice [teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8/teca_multimediale_v8.ino)**
 
 # Schema
 
@@ -46,7 +46,7 @@ Il codice caricato nell'ESP-32 è scritto in C++ ed è composto da due task prin
 che vengono eseguiti contemporaneamente (Task riproduzione audio, Task movimento servomotore),
 oltre alla sezione di setup del web server e delle varie interfacce e pin.
 
-Per una descrizione dettagliata del codice, [si rimanda al codice stesso commentato.](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8.ino)
+Per una descrizione dettagliata del codice, [si rimanda al codice stesso commentato.](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8/teca_multimediale_v8.ino)
 
 ## Ambiente di sviluppo
 
