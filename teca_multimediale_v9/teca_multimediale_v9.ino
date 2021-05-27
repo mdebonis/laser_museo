@@ -54,6 +54,7 @@ Servo servoX;
 bool attesaRestart = false;
 bool setServo = true;  //se non si è premuto il pulsante, permette di settare le posizioni del servo e memorizzare in file tramite web server
 bool primoStart = true;
+bool pulsantePremuto = false;
 int len = 0;          //lunghezza del file servo
 int angoloMem = 0;
 int posInitY = 25;     //posizione iniziale
@@ -63,6 +64,8 @@ String laserOn = "";  //se "1" vuol dire che il laser, durante il movimento rima
 
 //il form NON ha i controlli sui valori inseriti in input
 //se si inserisce l'opzione "laser acceso" il movimento avviene lentamente, altrimenti avviene velocemente
+String inizio = "<head> <style> input {border-radius: 30px; font-size: 3em; background-color: #4CAF50;  border: none;  color: white;  padding: 16px 32px;  text-decoration: none;  margin: 4px 2px;  cursor: pointer; position: fixed;  top: 50%;  left: 50%;  transform: translate(-50%, -50%); width: 70%; height: 70%}</style></head><form method=\"POST\" action= \"/avvia\"><br><input type=\"submit\" value=\"AVVIA\"></form>";
+String avviato = "<head> <style> input {font-size: 3em; border: none;  padding: 16px 32px;  text-decoration: none;  margin: 4px 2px; position: fixed;  top: 50%;  left: 50%;  transform: translate(-50%, -50%); width: 70%; height: 70%}</style></head><p>ESPOSIZIONE AVVIATA,<br><br>BUON<br>DIVERTIMENTO!</p>";
 String FORMservo = "<form method=\"POST\" action= \"/rispFORMservo\"><br><H2>MUSEUM</H2><br><br>angoloY<input type=\"text\" name=\"angY\"><br>angoloX<input type=\"text\" name=\"angX\"><br>deltaT<input type=\"text\" name=\"delt\"><br>laser acceso<input type=\"radio\" name=\"las\" value=\"lasOn\"><br>acquisisci in file<input type=\"radio\" name=\"fil\" value=\"inFile\"><br><input type=\"submit\" value=\"CONTINUA\"></H2></form> <form method=\"POST\" action= \"/riavviaEsp\"><br><input type=\"submit\" value=\"SALVA I NUOVI MOVIMENTI\"></form> <form method=\"POST\" action= \"/eliminaFile\"><br><input type=\"submit\" value=\"ELIMINA FILE POSIZIONI\"></form>";
 String FORMciclo;
 String formCiclo1 = "<form method=\"POST\" action= \"/rispFORMservo\"><br><H2>Valori angoli attuali: ";
@@ -80,6 +83,7 @@ void setup() {
     pinMode(puls, INPUT);
     pinMode(SD_CS, OUTPUT);
     pinMode(laser, OUTPUT);
+    digitalWrite(laser, LOW);
     digitalWrite(SD_CS, HIGH);
     SPI.begin(SPI_SCK, SPI_MISO, SPI_MOSI);
     SPI.setFrequency(1000000);
@@ -122,8 +126,20 @@ void setup() {
 //CREAZIONE PAGINE DEL WEB SERVER
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
   {
+    request->send(200, "text/html", inizio);
+  });
+
+  server.on("/avvia", HTTP_POST, [](AsyncWebServerRequest *request)
+  {
+    pulsantePremuto = true;
+    request->send(200, "text/html", avviato);
+  });
+
+  server.on("/impostamovimenti", HTTP_GET, [](AsyncWebServerRequest *request)
+  {
     request->send(200, "text/html", FORMservo);
   });
+  
  //acquisisce i dati inviati dal form su browser
   server.on("/rispFORMservo", HTTP_POST, [](AsyncWebServerRequest *request)
   {
@@ -229,8 +245,11 @@ void voice( void * parameter )
             delay(2000);
             ESP.restart();
            }
-    if (primoStart && digitalRead(puls) == HIGH)
-       {audio.connecttoSD(fileAudio);    Serial.println("pulsante premuto");
+    if (primoStart && pulsantePremuto)
+       {
+        //pulsantePremuto = false;
+        
+        audio.connecttoSD(fileAudio);    Serial.println("pulsante premuto");
         primoStart = false;
         Serial.print("GRANDEZZA FILE: ");
         Serial.println(audio.getFileSize());
@@ -265,8 +284,11 @@ void servo( void * parameter)
 {
   for (;;)      //loop
   {
-     if(setServo && digitalRead(puls) == HIGH)
-     {digitalWrite(laser, LOW);
+     if(setServo && pulsantePremuto)
+     {
+      //pulsantePremuto = false;
+      
+      digitalWrite(laser, LOW);
       servoY.write(posInitY);
       servoX.write(posInitX);
       setServo = false;  Serial.println("pulsante premuto2");
