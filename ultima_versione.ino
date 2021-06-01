@@ -51,7 +51,7 @@ static const char fileAudio[] = "/audio.mp3";
 static const char fileMovimenti[] = "/servo.txt";   //lo slash è obbligatorio
 static const int servoPinY = 4;
 static const int servoPinX = 13;
-static const int servoPinZ = 16;
+static const int servoPinZ = 32;
 static uint8_t buf[512];  //buffer dove viene memorizzato il contenuto del file
 static int laser = 2;     //pin laser
 Servo servoY;
@@ -282,12 +282,12 @@ void voice( void * parameter )
     if(!attesaRestart && !primoStart)
     {
       audio.loop();
-      Serial.print("SECONDI: ");
+      /*Serial.print("SECONDI: ");
       Serial.println(audio.getAudioCurrentTime());
       Serial.print("POSIZIONE: ");
       Serial.println(audio.getFilePos());
       Serial.print("GRANDEZZA FILE: ");
-      Serial.println(audio.getFileSize());
+      Serial.println(audio.getFileSize());*/
 
       if (audio.getFilePos() == audio.getFileSize() || audio.getFilePos() > audio.getFileSize())
       {
@@ -317,8 +317,8 @@ void servo( void * parameter)
       String riga;
       readFile(SD, fileMovimenti);  //mette nella variabile len la lunghezza del file e in buf il contenuto
       int posMemY = posInitY;       //posizione precedente (per capire in quale verso effettuare il movimento graduale)
-      int posMemX = posMemX;
-      int posMemZ = posMemZ;
+      int posMemX = posInitX;
+      int posMemZ = posInitZ;
      while (i < len)              //ciclo che legge tutto il file
       { riga = "";
        while (buf[i] != 0xD)      //legge una riga dal file, formato:      TEMPO;POSIZIONEX;POSIZIONEY;LASER\n
@@ -384,6 +384,7 @@ void servo( void * parameter)
 
         if(posZ > posMemZ)         //movimento verso il basso
         {
+           Serial.println("MMM");
            for (int j = posMemZ; j < posZ; j=j+2)
            {
              servoZ.write(j);
@@ -392,6 +393,7 @@ void servo( void * parameter)
         }
         else if(posZ < posMemZ)     //movimento verso l'alto
         {
+            Serial.println("mmm");
            for (int j = posMemZ; j > posZ; j=j-2)
            {
              servoZ.write(j);
