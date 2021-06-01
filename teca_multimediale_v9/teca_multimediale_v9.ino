@@ -269,7 +269,8 @@ void voice( void * parameter )
       Serial.print("GRANDEZZA FILE: ");
       Serial.println(audio.getFileSize());
 
-      if (audio.getFilePos() == audio.getFileSize() || audio.getFilePos() > audio.getFileSize())
+      //if (audio.getFilePos() == audio.getFileSize() || audio.getFilePos() > audio.getFileSize())
+      if(audio.getFileSize() == 0)
       {
         audio.stopSong();
         attesaRestart = true;
