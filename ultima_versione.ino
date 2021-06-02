@@ -49,6 +49,7 @@
 Audio audio;
 static const char fileAudio[] = "/audio.mp3";
 static const char fileMovimenti[] = "/servo.txt";   //lo slash è obbligatorio
+static const char filePosizioneServo[] = "/posizione.txt";
 static const int servoPinY = 4;
 static const int servoPinX = 13;
 static const int servoPinZ = 32;
@@ -63,9 +64,9 @@ bool primoStart = true;
 bool pulsantePremuto = false;
 int len = 0;          //lunghezza del file servo
 int angoloMem = 0;
-int posInitY = 25;     //posizione iniziale
-int posInitX = 0;
-int posInitZ = 0;
+int posInitY = 130;     //posizione iniziale
+int posInitX = 80;
+int posInitZ = 102;
 String laserOn = "";  //se "1" vuol dire che il laser, durante il movimento rimane acceso e il posizionamento del laser avviene lentamente
 
 
@@ -282,14 +283,14 @@ void voice( void * parameter )
     if(!attesaRestart && !primoStart)
     {
       audio.loop();
-      /*Serial.print("SECONDI: ");
+      Serial.print("SECONDI: ");
       Serial.println(audio.getAudioCurrentTime());
       Serial.print("POSIZIONE: ");
       Serial.println(audio.getFilePos());
       Serial.print("GRANDEZZA FILE: ");
-      Serial.println(audio.getFileSize());*/
+      Serial.println(audio.getFileSize());
 
-      if (audio.getFilePos() == audio.getFileSize() || audio.getFilePos() > audio.getFileSize())
+      if(audio.getFileSize() == 0)
       {
         audio.stopSong();
         attesaRestart = true;
@@ -384,7 +385,6 @@ void servo( void * parameter)
 
         if(posZ > posMemZ)         //movimento verso il basso
         {
-           Serial.println("MMM");
            for (int j = posMemZ; j < posZ; j=j+2)
            {
              servoZ.write(j);
@@ -393,7 +393,6 @@ void servo( void * parameter)
         }
         else if(posZ < posMemZ)     //movimento verso l'alto
         {
-            Serial.println("mmm");
            for (int j = posMemZ; j > posZ; j=j-2)
            {
              servoZ.write(j);
@@ -546,6 +545,22 @@ void readFile(fs::FS &fs, const char * path){
       file.read(buf,len);
     file.close();
 }
+
+/*void writeFile(fs::FS &fs, const char * path, const char * message){
+    Serial.printf("Writing to file: %s\r\n", path);
+
+    File file = fs.open(path, FILE_WRITE);
+    if(!file){
+        Serial.println("- failed to open file for writing");
+        return;
+    }
+    if(file.print(message)){
+        Serial.println("- message written");
+    } else {
+        Serial.println("- writing failed");
+    }
+    file.close();
+}*/
 
 void appendFile(fs::FS &fs, const char * path, const char * message){
     Serial.printf("Appending to file: %s\r\n", path);
