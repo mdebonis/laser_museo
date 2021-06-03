@@ -64,7 +64,7 @@ bool primoStart = true;
 bool pulsantePremuto = false;
 int len = 0;          //lunghezza del file servo
 int angoloMem = 0;
-int posInitY = 130;     //posizione iniziale
+int posInitY = 100;     //posizione iniziale
 int posInitX = 80;
 int posInitZ = 102;
 String laserOn = "";  //se "1" vuol dire che il laser, durante il movimento rimane acceso e il posizionamento del laser avviene lentamente
@@ -102,9 +102,9 @@ void setup() {
     {
       Serial.println("Apertura scheda SD fallita");
     }
-    servoY.attach(servoPinY);
+    /*servoY.attach(servoPinY);
     servoX.attach(servoPinX);
-    servoZ.attach(servoPinZ);
+    servoZ.attach(servoPinZ);*/
     audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
     audio.setVolume(12); // 0...21
 
@@ -245,9 +245,20 @@ void setup() {
   server.begin();
   Serial.println("Server started");
 //posiziona il servo al centro
+
+    servoY.attach(servoPinY);
+    servoX.attach(servoPinX);
+    servoZ.attach(servoPinZ);
+    
   servoY.write(posInitY);
   servoX.write(posInitX);
   servoZ.write(posInitZ);
+
+  delay(1000);
+
+  servoY.detach();
+  servoX.detach();
+  servoZ.detach();
 }
 
 void loop() {
@@ -310,9 +321,17 @@ void servo( void * parameter)
       //pulsantePremuto = false;
       
       digitalWrite(laser, LOW);
+      servoY.attach(servoPinY);
+      servoX.attach(servoPinX);
+      servoZ.attach(servoPinZ);
+      
       servoY.write(posInitY);
       servoX.write(posInitX);
       servoZ.write(posInitZ);
+
+      servoY.detach();
+      servoX.detach();
+      servoZ.detach();
       setServo = false;  Serial.println("pulsante premuto2");
       int i = 0;
       String riga;
@@ -382,6 +401,10 @@ void servo( void * parameter)
 //!!!può cambiare in base al motore utilizzato o al verso (testato su MG996R)
 
         //GETIONE MOVIMENTO SCHEDA MADRE A PARTE, PERCHE DEVE ESSERE SEMPRE LENTO
+
+        servoY.attach(servoPinY);
+        servoX.attach(servoPinX);
+        servoZ.attach(servoPinZ);
 
         if(posZ > posMemZ)         //movimento verso il basso
         {
@@ -519,6 +542,10 @@ void servo( void * parameter)
                }
              }
          }
+
+       servoY.detach();
+        servoX.detach();
+        servoZ.detach();
          
        i += 2;  //come fine riga c'è 0xD 0xA
        posMemX = posX;
