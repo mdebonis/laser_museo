@@ -4,15 +4,11 @@
 contenente la descrizione dell'oggetto puntato dal laser), con il
 microcontrollore ESP-32, in linguaggio C++.
 
-# FUNZIONANTE / DA COMPLETARE
+# FUNZIONANTE
 
-Il codice ([teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8/teca_multimediale_v8.ino)) e il circuito sono sono funzionanti e permettono il movimento di un solo
-servomotore, quindi il laser può muoversi lungo un solo asse, inoltre il circuito
-è interamente alimentato dal cavo USB utilizzato in fase di realizzazione per caricare
-il codice nella memoria dell'ESP-32. Da implementare la gestione di due servomotori
-e la creazione di una fonte di alimentazione fissa per il completamento del progetto.
-
-La versione successiva del codice ([teca_multimediale_v9.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v9/teca_multimediale_v9.ino)) permette la gestione di due servomotori e quindi il movimento del laser in due dimensioni. **Non è ancora stato testato, quindi potrebbe non funzionare**. **Lo [schema](#Schema) sottostante funziona solamente con il codice [teca_multimediale_v8.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8/teca_multimediale_v8.ino)**
+Il codice ([teca_multimediale_v10.ino](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v10/teca_multimediale_v10.ino)) e il circuito sono sono funzionanti e permettono il movimento di tre servomotori, per far muovere il laser in due dimensioni e per far ruotare la scheda madre. Il circuito
+è alimentato da due alimentatori: uno di essi fornisce in uscita i cavi di VCC e GND, direttamente collegati al circuito, per l'alimentazione dei servomotori, l'altro 
+alimenta tramite USB l'ESP-32, il quale a sua volta alimenta gli altri componenti del circuito.
 
 # Schema
 
@@ -21,16 +17,17 @@ La versione successiva del codice ([teca_multimediale_v9.ino](https://github.com
 # Come utilizzare
 
 Una volta avviato l'ESP-32, esso è in **modalità server web**, quindi è possibile trovare
-la pagina web inserendo nel browser l'indirizzo **192.168.4.1**, dopo essersi collegati
+la pagina web inserendo nel browser l'indirizzo **192.168.4.1/impostamovimenti**, dopo essersi collegati
 all'access point con il nome e la password specificate nel codice.
 La pagina web contiene un form tramite il quale è possibile impostare i parametri per il
 movimento del laser e **provare il movimento**. Se il movimento che si è appena provato
 è giusto, è possibile spuntare un'opzione del form che permette di **salvarlo in un file**.
 
+Anche per avviare l'esposizione è necessario collegarsi all'access point, dopodichè all'indirizzo **192.168.4.1** 
+viene fornito un pulsante per avviare il microcontrollore via wireless.
 Quando si preme il pulsante, l'ESP-32 inizia la **riproduzione del file audio** ed
 **effettua i movimenti** registrati nel file descritto in precedenza, quindi entra in
-**modalità esposizione**. Una volta terminata la riproduzione del file audio, se si
-preme il pulsante l'ESP-32 si riavvia e ritorna in modalità server web.
+**modalità esposizione**. Una volta terminata la riproduzione del file audio, l'ESP-32 si riavvia e ritorna in modalità server web.
 
 # Come installare
 
@@ -46,7 +43,7 @@ Il codice caricato nell'ESP-32 è scritto in C++ ed è composto da due task prin
 che vengono eseguiti contemporaneamente (Task riproduzione audio, Task movimento servomotore),
 oltre alla sezione di setup del web server e delle varie interfacce e pin.
 
-Per una descrizione dettagliata del codice, [si rimanda al codice stesso commentato.](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v8/teca_multimediale_v8.ino)
+Per una descrizione dettagliata del codice, [si rimanda al codice stesso commentato.](https://github.com/mdebonis/laser_museo/blob/main/teca_multimediale_v10/teca_multimediale_v10.ino)
 
 ## Ambiente di sviluppo
 
@@ -117,6 +114,4 @@ Il micro-SD-reader permette di leggere la scheda SD con gli audio utilizzati per
 Utilizzato nel progetto per abilitare permanentemente la modalità flash/upload sull’esp-32.
 Ha un perno positivo (l'anodo) ed un perno negativo chiamato catodo. Quando la tensione è applicata ad un condensatore elettrolitico, l'anodo deve essere ad una tensione superiore al catodo. Il catodo di un condensatore elettrolitico viene generalmente identificato con marchiato un '-' , e una striscia colorata sul case. La gamba dell'anodo potrebbe anche essere leggermente più lunga. Quando la corrente fluisce in un condensatore, le cariche sono "bloccate" sulle piastre perché non possono andare oltre il dielettrico isolante. Gli elettroni (particelle con carica negativa) vengono risucchiati in una delle piastre, diventando così di carica negativa. La grande massa di cariche negative su una piastra spinge via le altre cariche sull'altra piastra, rendendola carica positivamente. Le cariche positive e negative su ciascuno di queste piastre si attraggono, perché è quello che fanno cariche le opposte. Ma, con il dielettrico tra di loro, per quanto vogliono unirsi, le cariche saranno sempre bloccate sulla piastra (fino a quando non avranno un altro posto dove andare). Le cariche stazionarie su queste piastre creano un campo elettrico, che influenzano energia potenziale elettrica e tensione. Quando un gruppo di cariche si trovano su un condensatore di questo tipo, il condensatore può immagazzinare energia elettrica, come una batteria può immagazzinare energia chimica.
 
-### Resistenza (10kΩ)
-
-### Pulsante
+### Alimentatori 5V
