@@ -7,13 +7,12 @@
  * gli altri parametri: laser spento o acceso (se il laser è acceso il movimento sarà anche lento) e la coordinata (come angolo)
  *  versione 4: espone un server web mediante il quale è possibile far compiere i movimenti in
  * manuale al servo, impostando da una pagina web gli angoli. Occorre collegarsi al wifi ESPMUSEUM con password museum57 e
- * con il browser cercare la pagina http://192.168.4.1
- *  FUNZIONA. Il tutto parte premendo un pulsante, mentre quando finisce l'audio ripremendo il pulsante
- *  il sistema si resetta e poi per far ripartire ilciclo occorre di nuovo premere il pulsante.
+ * con il browser cercare la pagina http://192.168.4.1/impostamovimenti
+ *  FUNZIONA. Il tutto parte premendo un pulsante presente alla pagina http://192.168.4.1.
  *  Il programma legge in un file in sd la posizioni del servo mentre scorre l'audio.
- *  Il formato del file di testo sarà il seguente: tempo di ritardo prima di compiere il movimento, posizione x e y
+ *  Il formato del file di testo sarà il seguente: tempo di ritardo prima di compiere il movimento, posizione x, y e z
  *  in coordinate cartesiane, laser acceso o spento durante il percorso. p.es:
- *  3;120;90;1   aspetta 3 sec. poi si posiziona su x=120, y=90 con laser acceso con campi a lunghezza variabile.
+ *  3;120;90;0;1   aspetta 3 sec. poi si posiziona su x=120, y=90, z=0 con laser acceso con campi a lunghezza variabile.
  *  Il programma legge una riga, effettua il movimento e poi legge la successiva
  */
 
@@ -341,7 +340,7 @@ void servo( void * parameter)
       int posMemZ = posInitZ;
      while (i < len)              //ciclo che legge tutto il file
       { riga = "";
-       while (buf[i] != 0xD)      //legge una riga dal file, formato:      TEMPO;POSIZIONEX;POSIZIONEY;LASER\n
+       while (buf[i] != 0xD)      //legge una riga dal file, formato:      TEMPO;POSIZIONEX;POSIZIONEY;POSIZIONEZ;LASER\n
         {  riga += (char)buf[i];
            i++;
         }
@@ -572,22 +571,6 @@ void readFile(fs::FS &fs, const char * path){
       file.read(buf,len);
     file.close();
 }
-
-/*void writeFile(fs::FS &fs, const char * path, const char * message){
-    Serial.printf("Writing to file: %s\r\n", path);
-
-    File file = fs.open(path, FILE_WRITE);
-    if(!file){
-        Serial.println("- failed to open file for writing");
-        return;
-    }
-    if(file.print(message)){
-        Serial.println("- message written");
-    } else {
-        Serial.println("- writing failed");
-    }
-    file.close();
-}*/
 
 void appendFile(fs::FS &fs, const char * path, const char * message){
     Serial.printf("Appending to file: %s\r\n", path);
