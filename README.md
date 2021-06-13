@@ -16,7 +16,7 @@ La versione successiva del codice ([teca_multimediale_v9.ino](https://github.com
 
 # Schema
 
-![schema](https://github.com/mdebonis/laser_museo/blob/main/images/schema.jpeg)
+![schema](https://github.com/mdebonis/laser_museo/blob/main/images/schema.png)
 
 # Come utilizzare
 
